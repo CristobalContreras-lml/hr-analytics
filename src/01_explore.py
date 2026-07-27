@@ -41,6 +41,13 @@ def explore(df: pd.DataFrame) -> None:
     print(constantes if constantes else "No hay columnas constantes.")
 
     print("\n" + "=" * 60)
+    print("COLUMNAS TIPO ID (candidatas a eliminar)")
+    print("=" * 60)
+    posibles_ids = [col for col in df.columns if df[col].nunique() == df.shape[0]]
+    print(posibles_ids if posibles_ids else "No se detectaron columnas tipo ID.")
+    
+    
+    print("\n" + "=" * 60)
     print("TASA DE ROTACIÓN (ATTRITION) GENERAL")
     print("=" * 60)
     tasa = df["Attrition"].value_counts(normalize=True) * 100
